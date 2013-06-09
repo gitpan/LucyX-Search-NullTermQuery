@@ -27,4 +27,4 @@ resources:
   homepage: https://github.com/karpet/lucyx-search-nulltermquery
   license: http://dev.perl.org/licenses/
   repository: https://github.com/karpet/lucyx-search-nulltermquery
-version: 0.001
+version: 0.002
