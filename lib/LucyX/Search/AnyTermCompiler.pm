@@ -7,7 +7,7 @@ use Lucy::Search::ORQuery;
 use Lucy::Search::TermQuery;
 use Data::Dump qw( dump );
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 my $DEBUG = $ENV{LUCYX_DEBUG} || 0;
 
@@ -124,6 +124,17 @@ sub make_matcher {
 
 }
 
+=head2 get_child_compiler
+
+Returns the child ORCompiler, or undef if not defined.
+
+=cut
+
+sub get_child_compiler {
+    my $self = shift;
+    return $ORCompiler{$$self};
+}
+
 =head2 get_weight
 
 Delegates to ORCompiler child.
@@ -132,7 +143,9 @@ Delegates to ORCompiler child.
 
 sub get_weight {
     my $self = shift;
-    return $ORCompiler{$$self}->get_weight();
+    return $self->get_child_compiler
+        ? $self->get_child_compiler->get_weight(@_)
+        : $self->SUPER::get_weight(@_);
 }
 
 =head2 get_similarity
@@ -143,7 +156,9 @@ Delegates to ORCompiler child.
 
 sub get_similarity {
     my $self = shift;
-    return $ORCompiler{$$self}->get_similarity();
+    return $self->get_child_compiler
+        ? $self->get_child_compiler->get_similarity(@_)
+        : $self->SUPER::get_similarity(@_);
 }
 
 =head2 normalize
@@ -154,7 +169,9 @@ Delegates to ORCompiler child.
 
 sub normalize {
     my $self = shift;
-    return $ORCompiler{$$self}->normalize();
+    return $self->get_child_compiler
+        ? $self->get_child_compiler->normalize(@_)
+        : $self->SUPER::normalize(@_);
 }
 
 =head2 sum_of_squared_weights
@@ -165,7 +182,9 @@ Delegates to ORCompiler child.
 
 sub sum_of_squared_weights {
     my $self = shift;
-    return $ORCompiler{$$self}->sum_of_squared_weights();
+    return $self->get_child_compiler
+        ? $self->get_child_compiler->sum_of_squared_weights(@_)
+        : $self->SUPER::sum_of_squared_weights(@_);
 }
 
 =head2 highlight_spans
@@ -176,7 +195,9 @@ Delegates to ORCompiler child.
 
 sub highlight_spans {
     my $self = shift;
-    return $ORCompiler{$$self}->highlight_spans(@_);
+    return $self->get_child_compiler
+        ? $self->get_child_compiler->highlight_spans(@_)
+        : $self->SUPER::highlight_spans(@_);
 }
 
 1;

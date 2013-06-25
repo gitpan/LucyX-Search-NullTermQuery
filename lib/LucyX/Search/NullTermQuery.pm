@@ -5,7 +5,7 @@ use base qw( Lucy::Search::NOTQuery );
 use Carp;
 use LucyX::Search::AnyTermQuery;
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 =head1 NAME
 
@@ -51,7 +51,7 @@ Returns the query clause the object represents.
 
 sub to_string {
     my $self = shift;
-    return sprintf( "%s:NULL", $self->get_negated_query->get_field() );
+    return sprintf( "(%s:NULL)", $self->get_negated_query->get_field() );
 }
 
 1;

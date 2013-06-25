@@ -6,7 +6,7 @@ use Carp;
 use Scalar::Util qw( blessed );
 use LucyX::Search::AnyTermCompiler;
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 =head1 NAME
 
@@ -92,7 +92,7 @@ Returns the query clause the object represents.
 
 sub to_string {
     my $self = shift;
-    return sprintf( "NOT %s:NULL", $self->get_field );
+    return sprintf( "(NOT %s:NULL)", $self->get_field );
 }
 
 =head2 make_compiler
