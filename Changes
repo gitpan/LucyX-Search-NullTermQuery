@@ -1,12 +1,16 @@
 Revision history for LucyX-Search-NullTermQuery
 
-0.001    08 June 2013
-        Initial release.
+0.004 06 Oct 2013
+ - add term_limit feature to optimize using WildcardQuery
 
-0.002    08 June 2013
-        * administrative release only
+0.003 25 June 2013
+ - add parens around to_string() output
+ - add AnyTermCompiler->get_child_compiler method, refactoring to use it
+   internally.
 
-0.003   25 June 2013
-        * add parens around to_string() output
-        * add AnyTermCompiler->get_child_compiler method,
-          refactoring to use it internally.
+0.002 08 June 2013
+ - administrative release only
+
+0.001 08 June 2013
+ - Initial release.
+
