@@ -20,7 +20,6 @@ no_index:
 requires:
   Data::Dump: 0
   Lucy: 0.003000
-  LucyX::Search::WildcardQuery: 0
   Test::More: 0
   perl: 5.008003
 resources:
@@ -28,4 +27,4 @@ resources:
   homepage: https://github.com/karpet/lucyx-search-nulltermquery
   license: http://dev.perl.org/licenses/
   repository: https://github.com/karpet/lucyx-search-nulltermquery
-version: 0.004
+version: 0.005
